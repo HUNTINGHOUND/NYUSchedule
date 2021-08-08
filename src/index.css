@@ -1,3 +1,7 @@
+@import "style/SearchItems.css";
+@import "style/CourseCatalog.css";
+@import "style/SearchDisplay.css";
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

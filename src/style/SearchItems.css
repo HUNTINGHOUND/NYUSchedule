@@ -1,0 +1,10 @@
+.search-item {
+  front-size: 0.8em;
+  border-style: solid;
+  border-top: 0;
+  border-width: thin;
+}
+
+.search-item * {
+  box-sizing: border-box;
+}
