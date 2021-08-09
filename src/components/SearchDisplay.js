@@ -1,5 +1,4 @@
 import React from 'react';
-import InfiniteScroll from 'react';
 import { CourseCatalog } from './CourseCatalog.js';
 
 class SearchDisplay extends React.Component {

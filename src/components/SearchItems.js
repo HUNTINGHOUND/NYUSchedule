@@ -50,7 +50,7 @@ export class SearchItems extends React.Component {
       result = result + `<br />${key}: ${key === 'Tags' ? value.join(', ') : value}`;
     }
 
-    return result.length == 0 ? "No profile on RMP" : result;
+    return result.length === 0 ? "No profile on RMP" : result;
   }
 
   displayInfo() {
@@ -59,7 +59,7 @@ export class SearchItems extends React.Component {
     let index = 0;
     for(const [name, message] of Object.entries(this.props.info)) {
 
-      if(name === 'class_name') {
+      if(name === 'class_name' || name === 'link') {
         continue;
       }
 
@@ -87,6 +87,8 @@ export class SearchItems extends React.Component {
     return(
       <div className="search-item">
         <div className="item-name">{this.props.info['class_name']}</div>
+        <div className="info-container" data-tip="Click me to see detail."><a className="info-circle" href={this.props.info['link']}
+          target="_blank">i</a></div>
         <ul className="item-attrib-collection">
           {this.displayInfo()}
         </ul>
