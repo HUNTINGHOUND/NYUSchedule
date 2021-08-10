@@ -1,6 +1,7 @@
 @import "style/SearchItems.css";
 @import "style/CourseCatalog.css";
 @import "style/SearchDisplay.css";
+@import '../node_modules/antd/dist/antd.css';
 
 body {
   margin: 0;

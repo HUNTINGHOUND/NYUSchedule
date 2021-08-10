@@ -68,7 +68,8 @@ export class SearchItems extends React.Component {
           infolist.push(<Info key={index} name={name} message={
               <a href={(this.state.prof[i] && this.state.prof[i].url) ? ('//' + this.state.prof[i].url) : '#'}
                 data-tip={this.gettip(this.state.prof[i])}
-                target='_blank'>{message[i]}</a>
+                target='_blank'
+                rel="noreferrer">{message[i]}</a>
           }/>);
 
           index += 1;
@@ -88,7 +89,8 @@ export class SearchItems extends React.Component {
       <div className="search-item">
         <div className="item-name">{this.props.info['class_name']}</div>
         <div className="info-container" data-tip="Click me to see detail."><a className="info-circle" href={this.props.info['link']}
-          target="_blank">i</a></div>
+          target="_blank"
+          rel="noreferrer">i</a></div>
         <ul className="item-attrib-collection">
           {this.displayInfo()}
         </ul>

@@ -3,87 +3,104 @@
     "College of Arts and Science": {
       "code": "UA",
       "subject": {
-        "Select Subject": "dummy",
-        "Animal Studies": "ANST-UA",
-        "Anthropology": "ANTH-UA",
-        "Art History": "ARTH-UA",
-        "Biology": "BIOL-UA",
-        "CAS Scholars Program": "SCHOL-UA",
-        "Chemistry": "CHEM-UA",
-        "Child/Adoles Mental Hlth Stds": "CAMS-UA",
-        "Classics": "CLASS-UA",
-        "College Core Curriculum": "CORE-UA",
-        "Columbia Language Exchange": "COLU-UA",
-        "Comparative Literature": "COLIT-UA",
-        "Computer Science": "CSCI-UA",
-        "Creative Writing": "CRWRI-UA",
-        "Data Science": "DS-UA",
-        "Dramatic Literature": "DRLIT-UA",
-        "East Asian Studies": "EAST-UA",
-        "Economics": "ECON-UA",
-        "English": "ENGL-UA",
-        "Environmental Studies": "ENVST-UA",
-        "European and Mediterranean Stu": "EURO-UA",
-        "Expository Writing": "EXPOS-UA",
-        "First-Year Cohort Meeting": "COHRT-UA",
-        "First-Year Seminars": "FYSEM-UA",
-        "French": "FREN-UA",
-        "German": "GERM-UA",
-        "Hebrew & Judaic Studies": "HBRJD-UA",
-        "Hellenic Studies": "HEL-UA",
-        "History": "HIST-UA",
-        "International Relations": "INTRL-UA",
-        "Irish Studies": "IRISH-UA",
-        "Italian": "ITAL-UA",
-        "Journalism": "JOUR-UA",
-        "Latin Amer-Caribbean Studies": "LATC-UA",
-        "Linguistics": "LING-UA",
-        "Math": "MATH-UA",
-        "Medieval & Renaissance Studies": "MEDI-UA",
-        "Middle Eastern & Islam Studies": "MEIS-UA",
-        "Music": "MUSIC-UA",
-        "Neural Science": "NEURL-UA",
-        "Non-Departmental": "NODEP-UA",
-        "Philosophy": "PHIL-UA",
-        "Physics": "PHYS-UA",
-        "Politics": "POL-UA",
-        "Portuguese": "PORT-UA",
-        "Psychology": "PSYCH-UA",
-        "Public Policy": "PUBPL-UA",
-        "Religious Studies": "RELST-UA",
-        "Russian & Slavic Studies": "RUSSN-UA",
-        "Social and Cultural Analysis": "SCA-UA",
-        "Sociology": "SOC-UA",
-        "Spanish": "SPAN-UA"
+        "ANST-UA": "Animal Studies",
+        "ANTH-UA": "Anthropology",
+        "ARTH-UA": "Art History",
+        "BIOL-UA": "Biology",
+        "SCHOL-UA": "CAS Scholars Program",
+        "CHEM-UA": "Chemistry",
+        "CAMS-UA": "Child/Adoles Mental Hlth Stds",
+        "CLASS-UA": "Classics",
+        "CORE-UA": "College Core Curriculum",
+        "COLU-UA": "Columbia Language Exchange",
+        "COLIT-UA": "Comparative Literature",
+        "CSCI-UA": "Computer Science",
+        "CRWRI-UA": "Creative Writing",
+        "DS-UA": "Data Science",
+        "DRLIT-UA": "Dramatic Literature",
+        "EAST-UA": "East Asian Studies",
+        "ECON-UA": "Economics",
+        "ENGL-UA": "English",
+        "ENVST-UA": "Environmental Studies",
+        "EURO-UA": "European and Mediterranean Stu",
+        "EXPOS-UA": "Expository Writing",
+        "COHRT-UA": "First-Year Cohort Meeting",
+        "FYSEM-UA": "First-Year Seminars",
+        "FREN-UA": "French",
+        "GERM-UA": "German",
+        "HBRJD-UA": "Hebrew & Judaic Studies",
+        "HEL-UA": "Hellenic Studies",
+        "HIST-UA": "History",
+        "INTRL-UA": "International Relations",
+        "IRISH-UA": "Irish Studies",
+        "ITAL-UA": "Italian",
+        "JOUR-UA": "Journalism",
+        "LATC-UA": "Latin Amer-Caribbean Studies",
+        "LING-UA": "Linguistics",
+        "MATH-UA": "Math",
+        "MEDI-UA": "Medieval & Renaissance Studies",
+        "MEIS-UA": "Middle Eastern & Islam Studies",
+        "MUSIC-UA": "Music",
+        "NEURL-UA": "Neural Science",
+        "NODEP-UA": "Non-Departmental",
+        "PHIL-UA": "Philosophy",
+        "PHYS-UA": "Physics",
+        "POL-UA": "Politics",
+        "PORT-UA": "Portuguese",
+        "PSYCH-UA": "Psychology",
+        "PUBPL-UA": "Public Policy",
+        "RELST-UA": "Religious Studies",
+        "RUSSN-UA": "Russian & Slavic Studies",
+        "SCA-UA": "Social and Cultural Analysis",
+        "SOC-UA": "Sociology",
+        "SPAN-UA": "Spanish"
       }
     },
     "College of Dentistry - Cont Ed": {
       "code": "CD",
       "subject": {
-        "Select Subject": "dummy",
-        "Behavioral Sciences": "BEHSC-CD",
-        "Diagnostic Sciences": "DGSCI-CD",
-        "Ethics": "ETHIC-CD",
-        "Implant Dentistry": "IMPLA-CD"
+        "BEHSC-CD": "Behavioral Sciences",
+        "DGSCI-CD": "Diagnostic Sciences",
+        "ETHIC-CD": "Ethics",
+        "IMPLA-CD": "Implant Dentistry"
       }
     },
     "College of Dentistry - Grad": {
       "code": "DN",
       "subject": {
-        "Select Subject": "dummy",
-        "Basic Sciences": "BASCI-DN",
-        "Behavioral Sciences": "BEHSC-DN",
-        "Biomaterials": "BIOMS-DN",
-        "Clinical Sciences": "CLSCI-DN",
-        "Diagnostic Sciences": "DGSCI-DN",
-        "Intro to Clinics": "PRECL-DN",
-        "Preclinical Skills": "PCL11-DN"
+        "BAS01-DN": "Basic Sciences",
+        "BAS06-DN": "Basic Sciences",
+        "BASCI-DN": "Basic Sciences",
+        "BEH01-DN": "Behavioral Sciences",
+        "BEH03-DN": "Behavioral Sciences",
+        "BEH05-DN": "Behavioral Sciences",
+        "BEHSC-DN": "Behavioral Sciences",
+        "BIOMS-DN": "Biomaterials",
+        "CLS03-DN": "Clinical Sciences",
+        "CLS04-DN": "Clinical Sciences",
+        "CLS06-DN": "Clinical Sciences",
+        "CLS07-DN": "Clinical Sciences",
+        "CLS08-DN": "Clinical Sciences",
+        "CLS09-DN": "Clinical Sciences",
+        "CLS10-DN": "Clinical Sciences",
+        "CLS11-DN": "Clinical Sciences",
+        "CLSCI-DN": "Clinical Sciences",
+        "DGS03-DN": "Diagnostic Sciences",
+        "DGS06-DN": "Diagnostic Sciences",
+        "DGS07-DN": "Diagnostic Sciences",
+        "DGS10-DN": "Diagnostic Sciences",
+        "DGSCI-DN": "Diagnostic Sciences",
+        "PRECL-DN": "Intro to Clinics",
+        "PCL02-DN": "Preclinical Skills",
+        "PCL03-DN": "Preclinical Skills",
+        "PCL04-DN": "Preclinical Skills",
+        "PCL08-DN": "Preclinical Skills",
+        "PCL11-DN": "Preclinical Skills"
       }
     },
     "College of Dentistry - Undergrad": {
       "code": "DN",
       "subject": {
-        "dummy": "Select Subject",
         "DHYG3-UD": "Dental Hygiene BS",
         "DHYG1-UD": "Dental Hygiene Level 1",
         "DHYG2-UD": "Dental Hygiene Level 2",
@@ -93,14 +110,12 @@
     "Ctr for Urban Sci and Progress": {
       "code": "GX",
       "subject": {
-        "dummy": "Select Subject",
         "CUSP-GX": "Ctr for Urban Sci and Progress"
       }
     },
     "Gallatin - Grad": {
       "code": "GG",
       "subject": {
-        "dummy": "Select Subject",
         "CORE-GG": "Core",
         "ELEC-GG": "Electives",
         "INDIV-GG": "Individualized Projects"
@@ -109,7 +124,6 @@
     "Gallatin - Undergrad": {
       "code": "UG",
       "subject": {
-        "dummy": "Select Subject",
         "WRTNG-UG": "Advanced Writing Courses",
         "ARTS-UG": "Arts Workshops",
         "COLLQ-UG": "Colloquium",
@@ -123,7 +137,6 @@
     "Graduate School of Arts and Science": {
       "code": "GA",
       "subject": {
-        "dummy": "Select Subject",
         "AFRS-GA": "Africana Studies",
         "AMST-GA": "American Studies",
         "ANST-GA": "Animal Studies",
@@ -187,7 +200,6 @@
     "Liberal Studies": {
       "code": "UF",
       "subject": {
-        "dummy": "Select Subject",
         "AELS-UF": "Academic Engl for Liberal Stdy",
         "AGT-UF": "Advanced Global Topics",
         "AWS-UF": "Advanced Writing Studio",
@@ -230,21 +242,18 @@
     "NC Silver School of Social Work": {
       "code": "NS",
       "subject": {
-        "dummy": "Select Subject",
         "PMC-NS": "Post Master's Certificate"
       }
     },
     "NC Tisch School of the Arts": {
       "code": "NT",
       "subject": {
-        "dummy": "Select Subject",
         "SPEC-NT": "Special Professional Programs "
       }
     },
     "NYU Abu Dhabi - Grad": {
       "code": "GH",
       "subject": {
-        "dummy": "Select Subject",
         "ARTMD-GH": "Art and Media GH",
         "ECON-GH": "Economics GH",
         "ENGR-GH": "Engineering"
@@ -253,7 +262,6 @@
     "NYU Abu Dhabi - Undergrad": {
       "code": "UH",
       "subject": {
-        "dummy": "Select Subject",
         "ANTH-UH": "Anthropology",
         "ACS-UH": "Arab Crossroads Studies",
         "ARABL-UH": "Arabic Language",
@@ -302,7 +310,6 @@
     "NYU Shanghai - Undergrad": {
       "code": "UI",
       "subject": {
-        "dummy": "Select Subject",
         "ART-SHU": "Art",
         "BIOL-SHU": "Biology",
         "BUSF-SHU": "Business and Finance",
@@ -350,14 +357,12 @@
     "Non-Credit Interdisciplinary": {
       "code": "NZ",
       "subject": {
-        "dummy": "Select Subject",
         "CLAB-NZ": "NYU College and Career Lab"
       }
     },
     "Rory Meyers College of Nursing-Grad": {
       "code": "GN",
       "subject": {
-        "dummy": "Select Subject",
         "MAINT-GN": "Maintenance",
         "NURSE-GN": "Nursing - Graduate"
       }
@@ -365,7 +370,6 @@
     "Rory Meyers College of Nursing-UGRD": {
       "code": "UN",
       "subject": {
-        "dummy": "Select Subject",
         "MAINT-UN": "Maintenance",
         "NURSE-UN": "Nursing - Undergraduate"
       }
@@ -373,14 +377,12 @@
     "SPS - Diploma": {
       "code": "DC",
       "subject": {
-        "dummy": "Select Subject",
         "PARAL-DC": "Paralegal"
       }
     },
     "SPS - Grad": {
       "code": "GC",
       "subject": {
-        "dummy": "Select Subject",
         "CONM1-GC": "Construction Management MA/GC",
         "MSEM1-GC": "Event Management",
         "ECOC1-GC": "Exec Coaching & Org Consulting",
@@ -409,7 +411,6 @@
     "SPS - Undergrad": {
       "code": "UC",
       "subject": {
-        "dummy": "Select Subject",
         "DESL1-UC": "American Language Institute",
         "ANTH1-UC": "Anthropology",
         "ADAV1-UC": "Applied Data Analytics and Vis",
@@ -449,7 +450,6 @@
     "Schl of Global Public Health - Grad": {
       "code": "GU",
       "subject": {
-        "dummy": "Select Subject",
         "GPH-GU": "Global Public Health",
         "MAINT-GU": "Maintenance"
       }
@@ -457,14 +457,12 @@
     "Schl of Global Public Health-UGRD": {
       "code": "UU",
       "subject": {
-        "dummy": "Select Subject",
         "UGPH-GU": "Undergrad Global Public Health"
       }
     },
     "Silver School - Grad": {
       "code": "GS",
       "subject": {
-        "dummy": "Select Subject",
         "MSWAC-GS": "Advanced Concentration Courses",
         "DSWSW-GS": "Doctor of Social Welfare",
         "PHDSW-GS": "Doctoral",
@@ -476,14 +474,12 @@
     "Silver School - Undergrad": {
       "code": "US",
       "subject": {
-        "dummy": "Select Subject",
         "UNDSW-US": "Undergrad Social Work"
       }
     },
     "Steinhardt - Graduate": {
       "code": "GE",
       "subject": {
-        "dummy": "Select Subject",
         "AMLT-GE": "Administration, Leadership &",
         "ASH-GE": "Appl Stat, Social Sci, & Human",
         "APSY-GE": "Applied Psychology",
@@ -551,7 +547,6 @@
     "Steinhardt - Undergraduate": {
       "code": "UE",
       "subject": {
-        "dummy": "Select Subject",
         "ACE-UE": "Advanced College Essay",
         "ASL-UE": "American Sign Language",
         "APSY-UE": "Applied Psychology",
@@ -606,7 +601,6 @@
     "Stern - Grad": {
       "code": "GB",
       "subject": {
-        "dummy": "Select Subject",
         "ACCT-GB": "Accounting",
         "BSPA-GB": "Business & Society",
         "COR1-GB": "Core Course",
@@ -628,7 +622,6 @@
     "Stern - Undergrad": {
       "code": "UB",
       "subject": {
-        "dummy": "Select Subject",
         "ACCT-UB": "Accounting",
         "BPEP-UB": "Business and Political Economy",
         "BSPA-UB": "Business and Society",
@@ -647,7 +640,6 @@
     "Tandon - Grad": {
       "code": "GY",
       "subject": {
-        "dummy": "Select Subject",
         "BE-GY": "BioEngineering",
         "BI-GY": "Bioinformatics",
         "BT-GY": "Biotechnology",
@@ -677,7 +669,6 @@
     "Tandon - Undergrad": {
       "code": "UT",
       "subject": {
-        "dummy": "Select Subject",
         "AE-UY": "Aerospace Engineering",
         "BMS-UY": "Biomolecular Science",
         "CBE-UY": "Chemical & Biological Enginrng",
@@ -711,7 +702,6 @@
     "Tisch - Grad": {
       "code": "GT",
       "subject": {
-        "dummy": "Select Subject",
         "CINE-GT": "Cinema Studies",
         "ASPP-GT": "Ctr for Art, Society & Pub Pol",
         "DANC-GT": "Dance",
@@ -733,7 +723,6 @@
     "Tisch - Undergrad": {
       "code": "UT",
       "subject": {
-        "dummy": "Select Subject",
         "CINE-UT": "Cinema Studies",
         "COART-UT": "Collaborative Arts",
         "ASPP-UT": "Ctr for Art, Society & Pub Pol",
@@ -759,7 +748,6 @@
     "Wagner - Grad": {
       "code": "GP",
       "subject": {
-        "dummy": "Select Subject",
         "CAP-GP": "Capstone",
         "PHD-GP": "Doctoral",
         "EXEC-GP": "Executive MPA",
@@ -776,7 +764,6 @@
     "Wagner - Undergrad": {
       "code": "UW",
       "subject": {
-        "dummy": "Select Subject",
         "UPADM-GP": "UG Pub & Nonprofit MGT and Pol"
       }
     }

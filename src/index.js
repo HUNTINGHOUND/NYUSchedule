@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SearchDisplay from './components/SearchDisplay.js';
+import SearchOption from './components/SearchOption.js'
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
@@ -12,7 +13,7 @@ xhr.addEventListener("readystatechange", function() {
   if(this.readyState === 4) {
     info = JSON.parse(this.responseText);
     console.log(info);
-    ReactDOM.render(<SearchDisplay  data={info['courses']}/>, document.getElementById('root'));
+    ReactDOM.render(<SearchOption />, document.getElementById('root'));
   }
 });
 
