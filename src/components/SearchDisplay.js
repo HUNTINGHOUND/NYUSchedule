@@ -4,6 +4,7 @@ import { CourseCatalog } from './CourseCatalog.js';
 export class SearchDisplay extends React.Component {
   getCourses() {
     var courses = [];
+    if(!this.props.data) return courses;
 
     var index = 0;
     for(const [name, info] of Object.entries(this.props.data)) {

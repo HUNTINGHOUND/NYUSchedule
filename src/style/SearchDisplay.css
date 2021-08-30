@@ -1,5 +1,5 @@
 .searcher-display {
-  height: 70vh;
+  height: 75%;
   border-style: solid;
 }
 
@@ -12,6 +12,6 @@
 }
 
 .display {
-  height: 64vh;
-  overflow-y: scroll;
+  height: 93%;
+  overflow: scroll;
 }
