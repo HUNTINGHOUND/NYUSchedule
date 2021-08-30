@@ -1,7 +1,7 @@
 import React from 'react';
 import { CourseCatalog } from './CourseCatalog.js';
 
-class SearchDisplay extends React.Component {
+export class SearchDisplay extends React.Component {
   getCourses() {
     var courses = [];
 
@@ -16,11 +16,12 @@ class SearchDisplay extends React.Component {
 
   render() {
     return(
-      <div className="display">
-        {this.getCourses()}
+      <div className="searcher-display">
+        <h1>Search Results</h1>
+        <div className="display">
+          {this.getCourses()}
+        </div>
       </div>
     )
   }
 }
-
-export default SearchDisplay;

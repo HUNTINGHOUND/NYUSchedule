@@ -1,29 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SearchDisplay from './components/SearchDisplay.js';
-import SearchOption from './components/SearchOption.js'
+import Searcher from './components/Searcher.js';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
-
-var xhr = new XMLHttpRequest();
-
-var info = {};
-xhr.addEventListener("readystatechange", function() {
-  if(this.readyState === 4) {
-    info = JSON.parse(this.responseText);
-    console.log(info);
-    ReactDOM.render(<SearchOption />, document.getElementById('root'));
-  }
-});
-
-var param = 'term_code=1218&acad_group=UA&subject=CSCI-UA'
-var url = 'https://nyuscheduleserver.herokuapp.com/albert/getcourse';
-
-xhr.open('GET', url + '?' + param);
-xhr.send();
-
-
+ReactDOM.render(<Searcher />, document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

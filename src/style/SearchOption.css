@@ -1,0 +1,22 @@
+.search-option {
+  border-style: solid;
+  margin-bottom: 10px;
+  overflow: auto;
+}
+
+.select-container {
+  width: 60%;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+.input-container {
+  float: left;
+  width: 30%;
+  margin-bottom: 5px;
+}
+
+.search-option Button {
+  margin: 5px;
+}
