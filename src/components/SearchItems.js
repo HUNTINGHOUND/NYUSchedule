@@ -1,76 +1,90 @@
-import React from 'react'
-import ReactTooltip from 'react-tooltip'
+import React, { useEffect } from 'react';
+import useList from './use-list';
 
-export class SearchItems extends React.Component {
-  constructor(props) {
-    super(props);
+const Info = (props) => {
+  return (
+    <li>
+      <b>{props.name}</b>: {props.message}
+    </li>
+  );
+};
 
-    this.state = {
-      prof : []
-    };
+const SearchItems = (props) => {
+  const prof = useList([]);
 
-  }
-
-  componentDidMount(){
+  useEffect(() => {
     var xhr = new XMLHttpRequest();
 
     var info = {};
-    xhr.addEventListener("readystatechange", () => {
-      if(xhr.readyState === 4) {
+    xhr.addEventListener('readystatechange', () => {
+      if (xhr.readyState === 4) {
         info = JSON.parse(xhr.responseText);
-        console.log("prof = ", info);
-        this.setState((prevState) => {
-          return {prof: [...prevState.prof, info]}
-        });
+        prof.addList(info);
       }
     });
 
-    for(let name of this.props.info['Instructor']) {
+    for (let name of props.info['Instructor']) {
+      if (name === 'Staff') {
+        prof.addList({});
+        continue;
+      }
       var param = 'name=' + name;
-      var url = 'https://nyuscheduleserver.herokuapp.com/rmp/getProf';
+      var url = 'http://127.0.0.1:5000/rmp/getProf';
 
       xhr.open('GET', url + '?' + param);
       xhr.send();
     }
+  }, [props]);
 
-  }
-
-  gettip(prof) {
-    let result = ""
-    if(!prof) {
-      return "No profile on RMP";
+  const gettip = (prof) => {
+    let result = '';
+    if (!prof) {
+      return 'No profile on RMP';
     }
 
-    for(const [key, value] of Object.entries(prof)) {
-      if(key === 'url' || key === 'tid') {
+    for (const [key, value] of Object.entries(prof)) {
+      if (key === 'url' || key === 'tid') {
         continue;
       }
 
-
-      result = result + `<br />${key}: ${key === 'Tags' ? value.join(', ') : value}`;
+      result =
+        result + `<br />${key}: ${key === 'Tags' ? value.join(', ') : value}`;
     }
 
-    return result.length === 0 ? "No profile on RMP" : result;
-  }
+    return result.length === 0 ? 'No profile on RMP' : result;
+  };
 
-  displayInfo() {
+  const displayInfo = () => {
     let infolist = [];
 
     let index = 0;
-    for(const [name, message] of Object.entries(this.props.info)) {
-
-      if(name === 'class_name' || name === 'link') {
+    for (const [name, message] of Object.entries(props.info)) {
+      if (name === 'class_name' || name === 'link') {
         continue;
       }
 
-      if(name === 'Instructor') {
-        for(let i = 0; i < message.length; i += 1) {
-          infolist.push(<Info key={index} name={name} message={
-              <a href={(this.state.prof[i] && this.state.prof[i].url) ? ('//' + this.state.prof[i].url) : '#'}
-                data-tip={this.gettip(this.state.prof[i])}
-                target='_blank'
-                rel="noreferrer">{message[i]}</a>
-          }/>);
+      if (name === 'Instructor') {
+        for (let i = 0; i < message.length; i += 1) {
+          infolist.push(
+            <Info
+              key={index}
+              name={name}
+              message={
+                <a
+                  href={
+                    prof.list[i] && prof.list[i].url
+                      ? '//' + prof.list[i].url
+                      : '#'
+                  }
+                  data-tip={gettip(prof.list[i])}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {message[i]}
+                </a>
+              }
+            />
+          );
 
           index += 1;
         }
@@ -82,24 +96,24 @@ export class SearchItems extends React.Component {
     }
 
     return infolist;
-  }
+  };
 
-  render() {
-    return(
-      <div className="search-item">
-        <div className="item-name">{this.props.info['class_name']}</div>
-        <div className="info-container" data-tip="Click me to see detail."><a className="info-circle" href={this.props.info['link']}
+  return (
+    <div className="search-item">
+      <div className="item-name">{props.info['class_name']}</div>
+      <div className="info-container" data-tip="Click me to see details.">
+        <a
+          className="info-circle"
+          href={props.info['link']}
           target="_blank"
-          rel="noreferrer">i</a></div>
-        <ul className="item-attrib-collection">
-          {this.displayInfo()}
-        </ul>
-        <ReactTooltip place='right' type='dark' effect='float' multiline={true}/>
+          rel="noreferrer"
+        >
+          i
+        </a>
       </div>
-    );
-  }
-}
+      <ul className="item-attrib-collection">{displayInfo()}</ul>
+    </div>
+  );
+};
 
-function Info(props) {
-  return <li><b>{props.name}</b>: {props.message}</li>;
-}
+export default SearchItems;

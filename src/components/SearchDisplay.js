@@ -1,28 +1,28 @@
 import React from 'react';
-import { CourseCatalog } from './CourseCatalog.js';
+import CourseCatalog from './CourseCatalog.js';
 
-export class SearchDisplay extends React.Component {
-  getCourses() {
-    var courses = [];
-    if(!this.props.data) return courses;
+const SearchDisplay = (props) => {
+  const getCourses = () => {
+    let courses = [];
+    if (!props.data) return courses;
 
-    var index = 0;
-    for(const [name, info] of Object.entries(this.props.data)) {
+
+    let index = 0;
+    for (const [name, info] of Object.entries(props.data)) {
       courses.push(<CourseCatalog key={index} course={info} name={name} />);
-      index += 1;
+      index++;
     }
 
     return courses;
   }
 
-  render() {
-    return(
-      <div className="searcher-display">
-        <h1>Search Results</h1>
-        <div className="display">
-          {this.getCourses()}
-        </div>
+  return (
+    <div className="searcher-display">
+      <h1>Search Results</h1>
+      <div className="display">
+        {getCourses()}
       </div>
-    )
-  }
+    </div>)
 }
+
+export default SearchDisplay;

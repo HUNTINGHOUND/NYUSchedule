@@ -1,100 +1,75 @@
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import raw from 'raw.macro';
-import {Select, Input, Button} from 'antd';
+import { Select, Input, Button } from 'antd';
+import axios from 'axios';
 
-const {Option} = Select;
+const { Option } = Select;
 
-export class SearchOption extends React.Component {
-  constructor(props) {
-    super(props);
+const SearchOption = (props) => {
+  const options = useMemo(() => JSON.parse(raw('../resource/options.json')), []);
+  const [term_code, setTermCode] = useState(0);
+  const [acad_group, setAcadGroup] = useState('');
+  const [acad_name, setAcadName] = useState('');
+  const [subject, setSubject] = useState('');
+  const [catalog_nbr, setCatalogNbr] = useState(0);
+  const [keyword, setKeyword] = useState('');
+  const [class_nbr, setClassNbr] = useState('');
+  const [terms, setTerms] = useState([]);
 
-    this.options = JSON.parse(raw('../resource/options.json'));
+  useEffect(() => {
+    console.log('Sending request for terms');
+    const url = 'https://nyuscheduleserver.herokuapp.com/albert/getTerms';
 
-    this.state = {
-      term_code: 0,
-      acad_group: '',
-      acad_name: '',
-      subject: '',
-      catalog_nbr: 0,
-      keyword: '',
-      class_nbr: '',
-      terms: []
-    };
-
-    this.changeAcad = this.changeAcad.bind(this);
-    this.changeTerm = this.changeTerm.bind(this);
-    this.changeSubject = this.changeSubject.bind(this);
-    this.onCatalogChange = this.onCatalogChange.bind(this);
-    this.onKeywordChange = this.onKeywordChange.bind(this);
-    this.onClassChange = this.onClassChange.bind(this);
-    this.onSearch = this.onSearch.bind(this);
-  }
-
-  componentDidMount() {
-    console.log("sending request for terms");
-    var xhr = new XMLHttpRequest();
-    xhr.addEventListener("readystatechange", () => {
-      if (xhr.readyState === 4) {
-        console.log("Recieved terms: ", xhr.responseText);
-        this.setState({
-          terms: JSON.parse(xhr.responseText)
-        });
-      }
+    axios.get(url).then((res) => {
+      console.log('Recieved terms:', res.data);
+      setTerms(res.data);
     });
+  }, []);
 
-    var url = 'https://nyuscheduleserver.herokuapp.com/albert/getTerms';
+  const getSubject = () => {
+    let sub_option = [];
 
-    xhr.open('GET', url);
-    xhr.send();
-  }
-
-  getSubject() {
-    var options = [];
-
-    if (this.state.acad_name === '') {
-      options.push(
-        <Option key={0} value=''>
+    if (acad_name === '') {
+      sub_option.push(
+        <Option key={0} value="">
           Select a school first
         </Option>
       );
-      return options
+      return sub_option;
     }
 
     var i = 0;
-    for (let sub in this.options.acad_group[this.state.acad_name].subject) {
-      options.push(
+    for (let sub in options.acad_group[acad_name].subject) {
+      sub_option.push(
         <Option
           key={i}
-          value={`${this.options.acad_group[this.state.acad_name].subject[sub]}:${sub}`}>
-          {this.options.acad_group[this.state.acad_name].subject[sub]}
+          value={`${options.acad_group[acad_name].subject[sub]}:${sub}`}
+        >
+          {options.acad_group[acad_name].subject[sub]}
         </Option>
       );
 
       i += 1;
     }
 
-    return options;
-  }
+    return sub_option;
+  };
 
-  changeSubject(sub) {
-    console.log(typeof(sub))
-    var index = sub.search(':');
-    var code = sub.substring(index + 1, sub.length);
-    console.log("subject changed to ", code);
-    this.setState({subject: code});
-  }
+  const changeSubject = (sub) => {
+    setSubject(sub.substring(sub.search(':') + 1, sub.length));
+  };
 
-  getTerms() {
-    var options = [];
-    if (this.state.terms.length <= 0) {
+  const getTerms = () => {
+    let options = [];
+    if (terms.length <= 0) {
       return options;
     }
 
-    var index = 0;
-    for (let t of this.state.terms) {
+    let index = 0;
+    for (let term of terms) {
       options.push(
-        <Option key={index} value={t[1]}>
-          {t[1]}
+        <Option key={index} value={term[1]}>
+          {term[1]}
         </Option>
       );
 
@@ -102,23 +77,23 @@ export class SearchOption extends React.Component {
     }
 
     return options;
-  }
+  };
 
-  changeTerm(term) {
-    for (let t of this.state.terms) {
+  const changeTerm = (term) => {
+    for (let t of terms) {
       if (t[1] === term) {
-        console.log("set term to ", t[0]);
-        this.setState({term_code: t[0]});
+        console.log('set term to ', t[0]);
+        setTermCode(t[0]);
         return;
       }
     }
-  }
+  };
 
-  getAcad() {
-    var schools = [];
+  const getAcad = () => {
+    let schools = [];
 
-    var index = 0;
-    for (const name in this.options.acad_group) {
+    let index = 0;
+    for (const name in options.acad_group) {
       schools.push(
         <Option key={index} value={name}>
           {name}
@@ -131,47 +106,35 @@ export class SearchOption extends React.Component {
     return schools;
   }
 
-  changeAcad(acad) {
-    this.setState({acad_group: this.options.acad_group[acad].code, acad_name: acad});
-    console.log(this.options.acad_group[acad].code);
+  const changeAcad = (acad) => {
+    setAcadGroup(options.acad_group[acad].code);
+    setAcadName(acad);
+    console.log("set acad_group to", options.acad_group[acad].code);
   }
 
-  onSearch() {
-    var xhr = new XMLHttpRequest();
-
-    var info = {};
-    xhr.addEventListener("readystatechange", () => {
-      if (xhr.readyState === 4) {
-        info = JSON.parse(xhr.responseText);
-        this.props.handleSearch(info);
-      }
-    });
-
-    var param = `term_code=${this.state.term_code}&acad_group=${this.state.acad_group}&subject=${this.state.subject}&catalog_nbr=${this.state.catalog_nbr}&keyword=${this.state.keyword}&class_nbr=${this.state.class_nbr}`;
-
-    console.log("parameters", param);
-
-    var url = 'https://nyuscheduleserver.herokuapp.com/albert/getcourse';
-
-    xhr.open('GET', url + '?' + param);
-    xhr.send();
+  const onSearch = () => {
+    var param = `term_code=${term_code}&acad_group=${acad_group}&subject=${subject}&catalog_nbr=${catalog_nbr}&keyword=${keyword}&class_nbr=${class_nbr}`;
+    const url = 'https://nyuscheduleserver.herokuapp.com/albert/getcourse';
+    axios.get(url + "?" + param)
+      .then(res => {
+        props.handleSearch(res.data);
+      })
   }
 
-  onCatalogChange(e) {
-    this.setState({catalog_nbr: e.target.value});
+  const onCatalogChange = e => {
+    setCatalogNbr(e.target.value);
   }
 
-  onKeywordChange(e) {
-    this.setState({keyword_nbr: e.target.value});
+  const onKeywordChange = e => {
+    setKeyword(e.target.value);
   }
 
-  onClassChange(e) {
-    this.setState({class_nbr: e.target.value});
+  const onClassChange = e => {
+    setClassNbr(e.target.value);
   }
 
-  render() {
-    return (
-      <div className="search-option">
+  return (
+    <div className="search-option">
         <div className="select-container">
           <div className="search-field">
             <label>*Term</label>
@@ -183,12 +146,12 @@ export class SearchOption extends React.Component {
                 showSearch="showSearch"
                 placeholder="Select a term"
                 optionFilterProp="children"
-                onChange={this.changeTerm}
+                onChange={changeTerm}
                 filterOption={(input, option) => {
                   return option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0;
                 }
               }>
-              {this.getTerms()}
+              {getTerms()}
             </Select>
           </div>
         </div>
@@ -203,10 +166,10 @@ export class SearchOption extends React.Component {
               showSearch="showSearch"
               placeholder="Select a school"
               optionFilterProp="children"
-              onChange={this.changeAcad}
+              onChange={changeAcad}
               filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
               }>
-              {this.getAcad()}
+              {getAcad()}
             </Select>
           </div>
         </div>
@@ -221,10 +184,10 @@ export class SearchOption extends React.Component {
               showSearch="showSearch"
               placeholder="Select a subject"
               optionFilterProp="children"
-              onChange={this.changeSubject}
+              onChange={changeSubject}
               filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
               }>
-              {this.getSubject()}
+              {getSubject()}
             </Select>
           </div>
         </div>
@@ -239,7 +202,7 @@ export class SearchOption extends React.Component {
                 width: '100%'
               }}
               placeholder="Input keyword"
-              onChange={this.onKeywordChange}/>
+              onChange={onKeywordChange}/>
           </div>
         </div>
 
@@ -255,7 +218,7 @@ export class SearchOption extends React.Component {
                   width: '100%'
                 }}
                 placeholder="Input catalog"
-                onChange={this.onCatalogChange}/>
+                onChange={onCatalogChange}/>
             </div>
           </div>
 
@@ -269,15 +232,16 @@ export class SearchOption extends React.Component {
                   width: '100%'
                 }}
                 placeholder="Input keyword"
-                onChange={this.onClassChange}/>
+                onChange={onClassChange}/>
             </div>
           </div>
         </div>
       </div>
 
-      <Button type="primary" onClick={this.onSearch}>Search</Button>
+      <Button type="primary" onClick={onSearch}>Search</Button>
 
     </div>
-  );
-}
-}
+  )
+};
+
+export default SearchOption;

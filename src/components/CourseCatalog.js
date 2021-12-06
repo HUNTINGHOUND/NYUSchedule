@@ -1,28 +1,29 @@
 import React from 'react';
-import {SearchItems} from './SearchItems.js';
+import ReactTooltip from 'react-tooltip'
+import SearchItems from './SearchItems.js';
 
-export class CourseCatalog extends React.Component {
-  getAllClass() {
+const CourseCatalog = (props) => {
+  const getAllClass = () => {
     var classes = [];
 
     var index = 0;
-    for(let classObj of this.props.course) {
+    for(let classObj of props.course) {
       classObj.Instructor = classObj.Instructor.split(', ');
-      console.log(classObj);
       classes.push(<SearchItems key={index} info={classObj} />);
 
-      index += 1;
+      index++;
     }
 
-    return classes
+    return classes;
   }
 
-  render() {
-    return (
-      <div className="course-cata">
-        <h3 className="course-title">{this.props.name}</h3>
-        {this.getAllClass()}
-      </div>
+  return (
+    <div className="course-cata">
+      <h3 className="course-title">{props.name}</h3>
+      {getAllClass()}
+      <ReactTooltip place='right' type='dark' effect='float' multiline={true} />
+    </div>
     )
-  }
 }
+
+export default CourseCatalog
