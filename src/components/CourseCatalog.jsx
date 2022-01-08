@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchItems from './SearchItems.jsx';
+import ReactTooltip from 'react-tooltip';
 
 const CourseCatalog = (props) => {
   const getAllClass = () => {
@@ -25,6 +26,7 @@ const CourseCatalog = (props) => {
     <div className="course-cata">
       <h3 className="course-title">{props.name}</h3>
       {getAllClass()}
+      <ReactTooltip place='right' type='dark' effect='float' multiline={true} />
     </div>
     )
 }
