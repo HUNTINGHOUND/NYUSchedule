@@ -4,6 +4,9 @@ A web app that crawls the albert public course search website to get easily gath
 ## Demo
 The application is currently hosted on [github pages](https://huntinghound.github.io/nyuschedule/).
 
+## Build it yourself?
+Clone this repo, go to the root directory and run `npm install` (if this fails try to delete `package-lock.json` and/or update npm). Once all the dependencies are installed, run `npm start` to serve the application on your local network.
+
 ## Back-End Server
 The back end server used for this app is maintained at another repo [here](https://github.com/HUNTINGHOUND/albertserver).
 
