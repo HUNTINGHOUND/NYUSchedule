@@ -1,7 +1,8 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState, useCallback} from 'react';
 import raw from 'raw.macro';
 import { Select, Input, Button } from 'antd';
 import axios from 'axios';
+import useAsync from './use-async';
 
 const { Option } = Select;
 
@@ -15,6 +16,21 @@ const SearchOption = (props) => {
   const [keyword, setKeyword] = useState('');
   const [class_nbr, setClassNbr] = useState('');
   const [terms, setTerms] = useState([]);
+
+  const onSearchCallBack = useCallback( async () => {
+    var param = `term_code=${term_code}&acad_group=${acad_group}&subject=${subject}&catalog_nbr=${catalog_nbr}&keyword=${keyword}&class_nbr=${class_nbr}`;
+    const url = 'https://nyuscheduleserver.herokuapp.com/albert/getcourse';
+    let res = await axios.get(url + "?" + param);
+    return res.data;
+  }, [term_code, acad_group, subject, catalog_nbr, keyword, class_nbr]);
+
+  const searchAsyncFunction = useAsync(onSearchCallBack, false);
+
+  useEffect(() => {
+    if(searchAsyncFunction.status === "success") {
+      props.handleSearch(searchAsyncFunction.value);
+    }
+  }, [searchAsyncFunction.value, searchAsyncFunction.status, props]);
 
   useEffect(() => {
     console.log('Sending request for terms');
@@ -110,15 +126,6 @@ const SearchOption = (props) => {
     setAcadGroup(options.acad_group[acad].code);
     setAcadName(acad);
     console.log("set acad_group to", options.acad_group[acad].code);
-  }
-
-  const onSearch = () => {
-    var param = `term_code=${term_code}&acad_group=${acad_group}&subject=${subject}&catalog_nbr=${catalog_nbr}&keyword=${keyword}&class_nbr=${class_nbr}`;
-    const url = 'https://nyuscheduleserver.herokuapp.com/albert/getcourse';
-    axios.get(url + "?" + param)
-      .then(res => {
-        props.handleSearch(res.data);
-      })
   }
 
   const onCatalogChange = e => {
@@ -238,7 +245,7 @@ const SearchOption = (props) => {
         </div>
       </div>
 
-      <Button type="primary" onClick={onSearch}>Search</Button>
+      <Button type="primary" onClick={searchAsyncFunction.execute} disabled={searchAsyncFunction.status === "pending"}>Search</Button>
 
     </div>
   )

@@ -3,6 +3,10 @@
 @import "style/SearchDisplay.css";
 @import "style/SearchOption.css";
 @import "style/Searcher.css";
+@import "style/Calendar.css";
+@import "style/Main.css";
+@import "style/Topbar.css";
+@import "style/App.css";
 @import '../node_modules/antd/dist/antd.css';
 
 body {

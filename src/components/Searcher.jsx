@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import SearchDisplay  from './SearchDisplay.js';
-import SearchOption from './SearchOption.js';
+import SearchDisplay  from './SearchDisplay.jsx';
+import SearchOption from './SearchOption.jsx';
 
 const Searcher = (props) => {
   const [data, setData] = useState({});
@@ -12,7 +12,7 @@ const Searcher = (props) => {
   return (
     <div className="searcher">
       <SearchOption handleSearch={handleSearch} />
-      <SearchDisplay data={data} />
+      <SearchDisplay data={data} handleAddCourse={props.handleAddCourse} />
     </div>)
 }
 

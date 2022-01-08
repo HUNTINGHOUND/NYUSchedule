@@ -18,7 +18,26 @@ const useList = (initList) => {
         });
     }, [setList]);
 
-    return {list, addList, deleteList, setList};
+    const updateList = useCallback(
+        (index, val) => {
+            setList(prev => {
+                var newarr = [...prev];
+                newarr[index] = val;
+                return newarr;
+            })
+        },
+        [setList],
+    );
+
+    const concatList = useCallback(
+        (list) => {
+            setList(prev => [...prev, ...list]
+            )
+        },
+        [setList],
+    )
+
+    return {list, addList, deleteList, updateList, concatList, setList};
 }
 
 export default useList;

@@ -1,6 +1,9 @@
 .searcher {
   width: 30%;
-  height: 100vh;
-  padding: 5px;
+  height: 100%;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-bottom: 5px;
   overflow: hidden;
+  float: left;
 }
