@@ -45,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^3.2.3",
     "raw.macro": "^0.4.2"
   }
 }
