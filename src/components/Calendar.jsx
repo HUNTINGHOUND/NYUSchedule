@@ -13,6 +13,7 @@ const Calendar = (props) => {
         dayFormat="ddd"
         startTime={moment({h:6, m:0})}
         endTime={moment({h:22, m:40})}
+        numberOfDays='5'
         selectedIntervals={props.selectedIntervals}
         onIntervalSelect={props.handleIntervalSelect}
         onIntervalUpdate={props.handleIntervalUpdate}
