@@ -1,3 +1,4 @@
+[![HUNTINGHOUND](https://circleci.com/gh/HUNTINGHOUND/nyuschedule.svg?style=svg)](https://app.circleci.com/pipelines/github/HUNTINGHOUND/nyuschedule)
 # NYU Schedule
 A web app that crawls the albert public course search website to get easily gather course information. It's built with a calendar that students can use to better visualize their schedule.
 
