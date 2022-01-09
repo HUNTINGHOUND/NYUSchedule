@@ -20,7 +20,7 @@ The back end server used for this app is maintained at another repo [here](https
 - [ ] Use local storage to save options
 - [ ] Backend unit-testing
 - [ ] Frontend unit-testing
-- [ ] Documentation of the code
+- [x] Documentation of the code
 - [ ] Login feature? (TBD)
 - [ ] Add more error handling
 
