@@ -6,8 +6,16 @@ import useAsync from './use-async';
 
 const { Option } = Select;
 
+/**
+ * Component represents the search options and search button. 
+ */
 const SearchOption = (props) => {
+  /**
+   * See /src/resource/options.json for more details. 
+   * The file contains add the school name and their respective majors.
+   */
   const options = useMemo(() => JSON.parse(raw('../resource/options.json')), []);
+
   const [term_code, setTermCode] = useState(0);
   const [acad_group, setAcadGroup] = useState('');
   const [acad_name, setAcadName] = useState('');
@@ -17,6 +25,11 @@ const SearchOption = (props) => {
   const [class_nbr, setClassNbr] = useState('');
   const [terms, setTerms] = useState([]);
 
+  /**
+   * Async function for sending request that get courses based on the configuration chosen by the user. 
+   * useCallback hook to make sure useAsync would not fall into a loop.
+   * @return course information in JSON
+   */
   const onSearchCallBack = useCallback( async () => {
     var param = `term_code=${term_code}&acad_group=${acad_group}&subject=${subject}&catalog_nbr=${catalog_nbr}&keyword=${keyword}&class_nbr=${class_nbr}`;
     const url = 'https://nyuscheduleserver.herokuapp.com/albert/getcourse';
@@ -26,12 +39,18 @@ const SearchOption = (props) => {
 
   const searchAsyncFunction = useAsync(onSearchCallBack, false);
 
+  /**
+   * When the search is successful, pass the values to parent component that will handle the value.
+   */
   useEffect(() => {
     if(searchAsyncFunction.status === "success") {
       props.handleSearch(searchAsyncFunction.value);
     }
   }, [searchAsyncFunction.value, searchAsyncFunction.status, props]);
 
+  /**
+   * When components first mounts, get the available terms.
+   */
   useEffect(() => {
     console.log('Sending request for terms');
     const url = 'https://nyuscheduleserver.herokuapp.com/albert/getTerms';
@@ -42,6 +61,10 @@ const SearchOption = (props) => {
     });
   }, []);
 
+  /**
+   * Get the option components for the majors. The components changes based on which school the user picked previously. 
+   * @returns A list of option components.
+   */
   const getSubject = () => {
     let sub_option = [];
 
@@ -71,10 +94,19 @@ const SearchOption = (props) => {
     return sub_option;
   };
 
+  /**
+   * Handle changing major selection. Note that the value of major is formatted as "longname:symbol". Since the server only takes symbol for
+   * major parameter, this format is used as a key-value pair.
+   * @param {*} sub Subject that is to be switched to.
+   */
   const changeSubject = (sub) => {
     setSubject(sub.substring(sub.search(':') + 1, sub.length));
   };
 
+  /**
+   * Get option components for the semester terms.
+   * @returns A list options components.
+   */
   const getTerms = () => {
     let options = [];
     if (terms.length <= 0) {
@@ -95,16 +127,23 @@ const SearchOption = (props) => {
     return options;
   };
 
+  /**
+   * Handle term change. 
+   * @param {*} term Term to be switched to.
+   */
   const changeTerm = (term) => {
     for (let t of terms) {
       if (t[1] === term) {
-        console.log('set term to ', t[0]);
         setTermCode(t[0]);
         return;
       }
     }
   };
 
+  /**
+   * Get option components for the academic group (aka schools).
+   * @returns 
+   */
   const getAcad = () => {
     let schools = [];
 
@@ -122,20 +161,36 @@ const SearchOption = (props) => {
     return schools;
   }
 
+  /**
+   * Handle change the acad group
+   * @param {*} acad acad group to be changed into.
+   */
   const changeAcad = (acad) => {
     setAcadGroup(options.acad_group[acad].code);
     setAcadName(acad);
     console.log("set acad_group to", options.acad_group[acad].code);
   }
 
+  /**
+   * Handle changing catalog number
+   * @param {*} e Change event
+   */
   const onCatalogChange = e => {
     setCatalogNbr(e.target.value);
   }
 
+  /**
+   * Handle changing keyword
+   * @param {*} e Change event
+   */
   const onKeywordChange = e => {
     setKeyword(e.target.value);
   }
 
+  /**
+   * Handle changing class number
+   * @param {*} e Change event
+   */
   const onClassChange = e => {
     setClassNbr(e.target.value);
   }

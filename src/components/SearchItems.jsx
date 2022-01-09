@@ -63,6 +63,9 @@ const SearchItems = (props) => {
     // eslint-disable-next-line
   }, [props]);
 
+  /**
+   * Rebuild the tool tip for dynamic content
+   */
   useEffect(() => {
     ReactTooltip.rebuild();
   })
@@ -119,6 +122,10 @@ const SearchItems = (props) => {
     return infolist;
   };
 
+  /**
+   * Handle when a course is clicked. Will use call back function given by props to add interval to the calendar. 
+   * @param {*} e The click event
+   */
   const onCourseClick = (e) => {
     if(e.target.tagName === 'A') return;
     const date_strings = props.info["Days/Times"].split(' ');
