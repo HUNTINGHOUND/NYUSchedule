@@ -2,7 +2,11 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import useList from "./use-list";
 import moment from "moment";
+import ReactTooltip from "react-tooltip";
 
+/**
+ * Component rendering the key-value pair of a class.
+ */
 const Info = (props) => {
   return (
     <li>
@@ -14,6 +18,11 @@ const Info = (props) => {
 const SearchItems = (props) => {
   const prof = useList([]);
 
+  /**
+   * Display info passed in through a format accepted by react-tool-tip
+   * @param {*} prof Info to display
+   * @returns String that can be used by tool tip.
+   */
   const gettip = (prof) => {
     let result = "";
     if (!prof) {
@@ -32,6 +41,9 @@ const SearchItems = (props) => {
     return result.length === 0 ? "No profile on RMP" : result;
   };
 
+  /**
+   * When the component first renders, try to get the instructor/s information from Rate My Professor
+   */
   useEffect(() => {
     prof.setList([]);
     for (let name of props.info["Instructor"]) {
@@ -51,6 +63,14 @@ const SearchItems = (props) => {
     // eslint-disable-next-line
   }, [props]);
 
+  useEffect(() => {
+    ReactTooltip.rebuild();
+  })
+
+  /**
+   * Construct a list of components that represent the key-value pair of info of the class. 
+   * @returns A list of components to be rendered.
+   */
   const displayInfo = () => {
     let infolist = [];
 
@@ -137,7 +157,7 @@ const SearchItems = (props) => {
       end_date.minute(end_time.minute());
       end_date.second(0);
 
-      props.handleAddCourse(start_date, end_date, props.courseName + "\n" + props.info["class_name"]);
+      props.handleAddCourse(start_date, end_date, props.info["class_name"]);
     }
   }
 

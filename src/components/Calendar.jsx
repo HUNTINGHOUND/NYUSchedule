@@ -2,6 +2,9 @@ import moment from "moment";
 import React from 'react';
 import WeekCalendar from "react-week-calendar";
 
+/**
+ * Wrapper of the WeekCalendar component. Display a week view calendar.
+ */
 const Calendar = (props) => {
   return (
     <div className="calendar">

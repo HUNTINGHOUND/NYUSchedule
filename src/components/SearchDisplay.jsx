@@ -1,7 +1,14 @@
 import React from 'react';
 import CourseCatalog from './CourseCatalog';
 
+/**
+ * Component that gathers courses. This display the search result once the query is completed.
+ */
 const SearchDisplay = (props) => {
+  /**
+   * Create a list of course components using the info passed through props.
+   * @returns A list of course components. 
+   */
   const getCourses = () => {
     let courses = [];
     if (!props.data) return courses;
