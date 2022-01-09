@@ -27,7 +27,7 @@ const useList = (initList) => {
             newarr.splice(index, 1);
             return newarr;
         });
-    }, [setList.apply, list.length]);
+    }, [setList, list.length]);
 
     /**
      * Update element at the index
