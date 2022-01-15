@@ -11,8 +11,6 @@ Please note that I'm hosting the back-end on a free heroku server so it's not th
 ## Build it yourself?
 Clone this repo, go to the root directory and run `npm install` (if this fails try to delete `package-lock.json` and/or update npm). Once all the dependencies are installed, run `npm start` to serve the application on your local network.
 
-## Back-End Server
-The back end server used for this app is maintained at another repo [here](https://github.com/HUNTINGHOUND/albertserver).
 
 ## TODOS
 - [ ] Better Styling for the calendar through css and custom components
