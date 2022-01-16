@@ -13,7 +13,7 @@ const CourseCatalog = (props) => {
    */
   const handleAddCourse = (start, end, value) => {
     const name = (props.name.match(/\w+-\w+ \d+ -/)[0]).slice(0, -1);
-    props.handleAddCourse(start, end, name + '\n' + value);
+    props.handleAddCourse(start, end, <>{name} <br /> {value}</>);
   }
 
   /**

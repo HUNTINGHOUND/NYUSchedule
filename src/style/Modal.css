@@ -1,0 +1,16 @@
+.modal-text {
+    text-align: center;
+    margin-bottom: 5px;
+    white-space: nowrap;
+}
+
+.modal-input {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.modal-select {
+    margin-bottom: 10px;
+    width: 100%;
+}
+

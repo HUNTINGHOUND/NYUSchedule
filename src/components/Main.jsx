@@ -33,7 +33,7 @@ const Main = () => {
    * @param {*} event interval to be updated.
    */
   const handleEventUpdate = (event) => {
-    const index = selectedIntervals.findIndex(
+    const index = selectedIntervals.list.findIndex(
       (interval) => interval.uid === event.uid
     );
 
@@ -52,6 +52,8 @@ const Main = () => {
       };
     });
 
+    console.log("trigger");
+
     selectedIntervals.concatList(intervals);
     setUid((prev) => prev + 1);
   };
@@ -68,6 +70,7 @@ const Main = () => {
       end: end,
       value: value,
       uid: available_uid,
+      color: "#1476b9"
     };
 
     selectedIntervals.addList(interval);

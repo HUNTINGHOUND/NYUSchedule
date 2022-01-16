@@ -1,3 +1,4 @@
+@import '../node_modules/antd/dist/antd.css';
 @import "style/SearchItems.css";
 @import "style/CourseCatalog.css";
 @import "style/SearchDisplay.css";
@@ -7,7 +8,8 @@
 @import "style/Main.css";
 @import "style/Topbar.css";
 @import "style/App.css";
-@import '../node_modules/antd/dist/antd.css';
+@import "style/Event.css";
+@import "style/Modal.css";
 
 body {
   height: 100%;
@@ -23,4 +25,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.float-right {
+  float: right;
 }
