@@ -13,7 +13,7 @@ Clone this repo, go to the root directory and run `npm install` (if this fails t
 
 
 ## TODOS
-- [ ] Better Styling for the calendar through css and custom components
+- [x] Better Styling for the calendar through css and custom components
 - [ ] Complete keyword filter option (keyword option does nothing at the time of writing)
 - [ ] More filter options
 - [ ] Use local storage to save options
