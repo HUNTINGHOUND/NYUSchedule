@@ -7,3 +7,11 @@
   overflow: hidden;
   float: left;
 }
+
+@media only screen and (max-width: 600px) {
+  .searcher{
+      width: 100%;
+      float: none;
+      padding-right: 5px
+  }
+}

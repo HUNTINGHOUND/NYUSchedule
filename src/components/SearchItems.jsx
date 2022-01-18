@@ -164,7 +164,7 @@ const SearchItems = (props) => {
       end_date.minute(end_time.minute());
       end_date.second(0);
 
-      props.handleAddCourse(start_date, end_date, (<>{props.info["class_name"]}</>));
+      props.handleAddCourse(start_date, end_date, props.info["class_name"]);
     }
   }
 

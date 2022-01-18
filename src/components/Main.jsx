@@ -70,7 +70,7 @@ const Main = () => {
       end: end,
       value: value,
       uid: available_uid,
-      color: "#1476b9"
+      color: "DodgerBlue"
     };
 
     selectedIntervals.addList(interval);
