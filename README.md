@@ -22,6 +22,7 @@ Clone this repo, go to the root directory and run `npm install` (if this fails t
 - [x] Documentation of the code
 - [ ] Login feature? (TBD)
 - [ ] Add more error handling
+- [ ] Add Css for mobile
 
 ## Issues or Want to contribute?
 If you have an issue, pose an issue in the github issue tab and I will get to it when I have the time. If you want to contribute, pose an issue to specify what you want to do and fork the repository. All is welcomed! See [CONTRIBUTING.md](CONTRIBUTING.md) for details on both.
