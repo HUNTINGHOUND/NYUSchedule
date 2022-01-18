@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/nyuschedule/static/css/main.4f990e8b.chunk.css",
-    "main.js": "/nyuschedule/static/js/main.4118b23d.chunk.js",
-    "main.js.map": "/nyuschedule/static/js/main.4118b23d.chunk.js.map",
-    "runtime-main.js": "/nyuschedule/static/js/runtime-main.3e774724.js",
-    "runtime-main.js.map": "/nyuschedule/static/js/runtime-main.3e774724.js.map",
+    "main.css": "/nyuschedule/static/css/main.11f5bcca.chunk.css",
+    "main.js": "/nyuschedule/static/js/main.d2a25abb.chunk.js",
+    "main.js.map": "/nyuschedule/static/js/main.d2a25abb.chunk.js.map",
+    "runtime-main.js": "/nyuschedule/static/js/runtime-main.195ff276.js",
+    "runtime-main.js.map": "/nyuschedule/static/js/runtime-main.195ff276.js.map",
     "static/css/2.f382ffbb.chunk.css": "/nyuschedule/static/css/2.f382ffbb.chunk.css",
-    "static/js/2.adb04557.chunk.js": "/nyuschedule/static/js/2.adb04557.chunk.js",
-    "static/js/2.adb04557.chunk.js.map": "/nyuschedule/static/js/2.adb04557.chunk.js.map",
-    "static/js/3.5c245715.chunk.js": "/nyuschedule/static/js/3.5c245715.chunk.js",
-    "static/js/3.5c245715.chunk.js.map": "/nyuschedule/static/js/3.5c245715.chunk.js.map",
+    "static/js/2.da1ed93c.chunk.js": "/nyuschedule/static/js/2.da1ed93c.chunk.js",
+    "static/js/2.da1ed93c.chunk.js.map": "/nyuschedule/static/js/2.da1ed93c.chunk.js.map",
+    "static/js/3.69a7a683.chunk.js": "/nyuschedule/static/js/3.69a7a683.chunk.js",
+    "static/js/3.69a7a683.chunk.js.map": "/nyuschedule/static/js/3.69a7a683.chunk.js.map",
     "index.html": "/nyuschedule/index.html",
     "static/css/2.f382ffbb.chunk.css.map": "/nyuschedule/static/css/2.f382ffbb.chunk.css.map",
-    "static/css/main.4f990e8b.chunk.css.map": "/nyuschedule/static/css/main.4f990e8b.chunk.css.map",
-    "static/js/2.adb04557.chunk.js.LICENSE.txt": "/nyuschedule/static/js/2.adb04557.chunk.js.LICENSE.txt"
+    "static/css/main.11f5bcca.chunk.css.map": "/nyuschedule/static/css/main.11f5bcca.chunk.css.map",
+    "static/js/2.da1ed93c.chunk.js.LICENSE.txt": "/nyuschedule/static/js/2.da1ed93c.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.3e774724.js",
+    "static/js/runtime-main.195ff276.js",
     "static/css/2.f382ffbb.chunk.css",
-    "static/js/2.adb04557.chunk.js",
-    "static/css/main.4f990e8b.chunk.css",
-    "static/js/main.4118b23d.chunk.js"
+    "static/js/2.da1ed93c.chunk.js",
+    "static/css/main.11f5bcca.chunk.css",
+    "static/js/main.d2a25abb.chunk.js"
   ]
 }
