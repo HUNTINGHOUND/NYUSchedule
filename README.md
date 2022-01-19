@@ -22,7 +22,11 @@ Clone this repo, go to the root directory and run `npm install` (if this fails t
 - [x] Documentation of the code
 - [ ] Login feature? (TBD)
 - [ ] Add more error handling
-- [ ] Add Css for mobile
+- [x] Add Css for mobile
+- [ ] Add parsing for the new public course search website
+
+## Known issues
+Due to the fact that public course search has a new website (which somehow is worse than the previous one) I will have to rework the back-end. Meanwhile, it seems like course search does not work with Tandon/Many other school. 
 
 ## Issues or Want to contribute?
 If you have an issue, pose an issue in the github issue tab and I will get to it when I have the time. If you want to contribute, pose an issue to specify what you want to do and fork the repository. All is welcomed! See [CONTRIBUTING.md](CONTRIBUTING.md) for details on both.
