@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/nyuschedule/static/css/main.11f5bcca.chunk.css",
-    "main.js": "/nyuschedule/static/js/main.d2a25abb.chunk.js",
-    "main.js.map": "/nyuschedule/static/js/main.d2a25abb.chunk.js.map",
+    "main.js": "/nyuschedule/static/js/main.bfa12a18.chunk.js",
+    "main.js.map": "/nyuschedule/static/js/main.bfa12a18.chunk.js.map",
     "runtime-main.js": "/nyuschedule/static/js/runtime-main.195ff276.js",
     "runtime-main.js.map": "/nyuschedule/static/js/runtime-main.195ff276.js.map",
     "static/css/2.f382ffbb.chunk.css": "/nyuschedule/static/css/2.f382ffbb.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.f382ffbb.chunk.css",
     "static/js/2.da1ed93c.chunk.js",
     "static/css/main.11f5bcca.chunk.css",
-    "static/js/main.d2a25abb.chunk.js"
+    "static/js/main.bfa12a18.chunk.js"
   ]
 }
