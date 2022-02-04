@@ -13,7 +13,6 @@ const CalendarModal = props => {
 
     const handleRemove = () => props.onRemove();
     const handleSave = () => {
-        console.log("saving ", input);
         props.onSave({
             start,
             end,
@@ -45,11 +44,9 @@ const CalendarModal = props => {
                 format="HH:mm"
                 minuteStep={15}
                 disabledHours={() => {
-                    console.log(Array(6).keys());
                     const disabled = [...Array(6).keys(), ...(Array.from(Array(4).keys()).map((num) => {
                         return num + 20;
                     }))];
-                    console.log(disabled);
                     return disabled;
                 }}
             />

@@ -26,7 +26,7 @@ Clone this repo, go to the root directory and run `npm install` (if this fails t
 - [ ] Add parsing for the new public course search website
 
 ## Known issues
-Due to the fact that public course search has a new website (which somehow is worse than the previous one) I will have to rework the back-end. Meanwhile, it seems like course search does not work with Tandon/Many other school. 
+NYU course search sucks ([found here](https://m.albert.nyu.edu/app/catalog/classSearch)). While I can technically write a back-end that logs into my nyu account and go through the official albert tool (which sucks), this method is way too slow. One idea is to parse through all the courses at a set time and cache the result (search through every 1-5 minutes, can be done using concurrency) but this will take a while to code. Unfortunately in the mean time, certain schools (notably Tandon) might not be able to look at their courses. I'm going to leave the option available if NYU decided to fix their website.
 
 ## Issues or Want to contribute?
 If you have an issue, pose an issue in the github issue tab and I will get to it when I have the time. If you want to contribute, pose an issue to specify what you want to do and fork the repository. All is welcomed! See [CONTRIBUTING.md](CONTRIBUTING.md) for details on both.

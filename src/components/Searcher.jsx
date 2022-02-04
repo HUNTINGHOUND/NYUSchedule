@@ -13,7 +13,7 @@ const Searcher = (props) => {
    * @param {*} res Result of the search.
    */
   const handleSearch = (res) => {
-    setData(res.courses)
+    setData(res)
   }
 
   return (

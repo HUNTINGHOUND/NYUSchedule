@@ -12,7 +12,7 @@ const CourseCatalog = (props) => {
    * @param {string} value The value to be displayed on the calendar
    */
   const handleAddCourse = (start, end, value) => {
-    const name = (props.name.match(/\w+-\w+ \d+ -/)[0]).slice(0, -1);
+    const name = (props.name.match(/\w+-\w+.*\d+/)[0]).slice(0, -1);
     props.handleAddCourse(start, end, name + "\n" + value);
   }
 
@@ -23,12 +23,8 @@ const CourseCatalog = (props) => {
     var classes = [];
 
     var index = 0;
-    for(let classObj of props.course) {
-      const newClassObj = {};
-      Object.assign(newClassObj, classObj);
-      newClassObj.Instructor = classObj.Instructor.split(', ');
-
-      classes.push(<SearchItems key={index} info={newClassObj} handleAddCourse={handleAddCourse}/>);
+    for(let classObj of props.course.classes) {
+      classes.push(<SearchItems key={index} info={classObj} handleAddCourse={handleAddCourse}/>);
 
       index++;
     }
@@ -39,7 +35,7 @@ const CourseCatalog = (props) => {
 
   return (
     <div className="course-cata">
-      <h3 className="course-title">{props.name}</h3>
+      <h3 className="course-title" style={{'whiteSpace': 'pre-line'}}>{props.name}</h3>
       {getAllClass()}
     </div>
     )

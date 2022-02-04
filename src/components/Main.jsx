@@ -52,7 +52,6 @@ const Main = () => {
       };
     });
 
-    console.log("trigger");
 
     selectedIntervals.concatList(intervals);
     setUid((prev) => prev + 1);

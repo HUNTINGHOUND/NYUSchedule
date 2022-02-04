@@ -1,5 +1,4 @@
-import React, { useEffect, useMemo, useState, useCallback} from 'react';
-import raw from 'raw.macro';
+import React, { useEffect, useState, useCallback} from 'react';
 import { Select, Input, Button } from 'antd';
 import axios from 'axios';
 import useAsync from './use-async';
@@ -10,20 +9,20 @@ const { Option } = Select;
  * Component represents the search options and search button. 
  */
 const SearchOption = (props) => {
-  /**
-   * See /src/resource/options.json for more details. 
-   * The file contains add the school name and their respective majors.
-   */
-  const options = useMemo(() => JSON.parse(raw('../resource/options.json')), []);
+  const [options, setOptions] = useState(null)
+  useEffect(() => {
+    const url = process.env.REACT_APP_BACK_END_URL + '/albert/getoptions';
+    axios.get(url).then(res => {
+      setOptions(res.data)
+    })
+  }, []);
 
-  const [term_code, setTermCode] = useState(0);
-  const [acad_group, setAcadGroup] = useState('');
+  const [term, setTerm] = useState('');
   const [acad_name, setAcadName] = useState('');
   const [subject, setSubject] = useState('');
   const [catalog_nbr, setCatalogNbr] = useState(0);
   const [keyword, setKeyword] = useState('');
   const [class_nbr, setClassNbr] = useState('');
-  const [terms, setTerms] = useState([]);
 
   /**
    * Async function for sending request that get courses based on the configuration chosen by the user. 
@@ -31,11 +30,11 @@ const SearchOption = (props) => {
    * @return course information in JSON
    */
   const onSearchCallBack = useCallback( async () => {
-    var param = `term_code=${term_code}&acad_group=${acad_group}&subject=${subject}&catalog_nbr=${catalog_nbr}&keyword=${keyword}&class_nbr=${class_nbr}`;
-    const url = 'https://nyuscheduleserver.herokuapp.com/albert/getcourse';
+    var param = `term=${term}&school=${acad_name}&major=${subject}`;
+    const url = process.env.REACT_APP_BACK_END_URL + '/albert/getcourse';
     let res = await axios.get(url + "?" + param);
     return res.data;
-  }, [term_code, acad_group, subject, catalog_nbr, keyword, class_nbr]);
+  }, [term, acad_name, subject]);
 
   const searchAsyncFunction = useAsync(onSearchCallBack, false);
 
@@ -47,19 +46,6 @@ const SearchOption = (props) => {
       props.handleSearch(searchAsyncFunction.value);
     }
   }, [searchAsyncFunction.value, searchAsyncFunction.status, props]);
-
-  /**
-   * When components first mounts, get the available terms.
-   */
-  useEffect(() => {
-    console.log('Sending request for terms');
-    const url = 'https://nyuscheduleserver.herokuapp.com/albert/getTerms';
-
-    axios.get(url).then((res) => {
-      console.log('Recieved terms:', res.data);
-      setTerms(res.data);
-    });
-  }, []);
 
   /**
    * Get the option components for the majors. The components changes based on which school the user picked previously. 
@@ -78,13 +64,13 @@ const SearchOption = (props) => {
     }
 
     var i = 0;
-    for (let sub in options.acad_group[acad_name].subject) {
+    for (let sub of options[term][acad_name]) {
       sub_option.push(
         <Option
           key={i}
-          value={`${options.acad_group[acad_name].subject[sub]}:${sub}`}
+          value={sub}
         >
-          {options.acad_group[acad_name].subject[sub]}
+          {sub}
         </Option>
       );
 
@@ -95,12 +81,11 @@ const SearchOption = (props) => {
   };
 
   /**
-   * Handle changing major selection. Note that the value of major is formatted as "longname:symbol". Since the server only takes symbol for
-   * major parameter, this format is used as a key-value pair.
+   * Handle changing major selection.
    * @param {*} sub Subject that is to be switched to.
    */
   const changeSubject = (sub) => {
-    setSubject(sub.substring(sub.search(':') + 1, sub.length));
+    setSubject(sub);
   };
 
   /**
@@ -108,23 +93,23 @@ const SearchOption = (props) => {
    * @returns A list options components.
    */
   const getTerms = () => {
-    let options = [];
-    if (terms.length <= 0) {
-      return options;
+    let options_components = [];
+    if (!options) {
+      return options_components;
     }
 
     let index = 0;
-    for (let term of terms) {
-      options.push(
-        <Option key={index} value={term[1]}>
-          {term[1]}
+    for (let term in options) {
+      options_components.push(
+        <Option key={index} value={term}>
+          {term}
         </Option>
       );
 
       index += 1;
     }
 
-    return options;
+    return options_components;
   };
 
   /**
@@ -132,12 +117,7 @@ const SearchOption = (props) => {
    * @param {*} term Term to be switched to.
    */
   const changeTerm = (term) => {
-    for (let t of terms) {
-      if (t[1] === term) {
-        setTermCode(t[0]);
-        return;
-      }
-    }
+    setTerm(term)
   };
 
   /**
@@ -147,8 +127,17 @@ const SearchOption = (props) => {
   const getAcad = () => {
     let schools = [];
 
+    if (term === '') {
+      schools.push(
+        <Option key={0} value="">
+          Select a term first
+        </Option>
+      );
+      return schools;
+    }
+
     let index = 0;
-    for (const name in options.acad_group) {
+    for (const name in options[term]) {
       schools.push(
         <Option key={index} value={name}>
           {name}
@@ -166,9 +155,7 @@ const SearchOption = (props) => {
    * @param {*} acad acad group to be changed into.
    */
   const changeAcad = (acad) => {
-    setAcadGroup(options.acad_group[acad].code);
     setAcadName(acad);
-    console.log("set acad_group to", options.acad_group[acad].code);
   }
 
   /**
@@ -210,9 +197,31 @@ const SearchOption = (props) => {
                 optionFilterProp="children"
                 onChange={changeTerm}
                 filterOption={(input, option) => {
-                  return option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0;
-                }
-              }>
+                  return option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                }}
+                filterSort={(optionA, optionB) => {
+                  let a_year = parseInt(optionA.value.substr(optionA.value.search(' ') + 1), 10)
+                  let a_term = optionA.value.substr(0, optionA.value.search(' '))
+
+                  let b_year = parseInt(optionB.value.substr(optionB.value.search(' ') + 1), 10)
+                  let b_term = optionB.value.substr(0, optionB.value.search(' '))
+
+                  if (a_year !== b_year) return a_year < b_year
+                  else {
+                    if (a_term === 'January') a_term = 1
+                    else if (a_term === 'Spring') a_term = 2
+                    else if (a_term === 'Summer') a_term = 3
+                    else a_term = 4
+
+                    if (b_term === 'January') a_term = 1
+                    else if (b_term === 'Spring') a_term = 2
+                    else if (b_term === 'Summer') a_term = 3
+                    else b_term = 4
+
+                    return a_term < b_term
+                  }
+                }}
+                >
               {getTerms()}
             </Select>
           </div>

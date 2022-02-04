@@ -46,13 +46,16 @@ const SearchItems = (props) => {
    */
   useEffect(() => {
     prof.setList([]);
+    if(!props.info["Instructor"]) {
+      return
+    }
     for (let name of props.info["Instructor"]) {
       if (name === "Staff") {
         prof.addList({});
         continue;
       }
       var param = "name=" + name;
-      var url = "https://nyuscheduleserver.herokuapp.com/rmp/getProf";
+      var url =  process.env.REACT_APP_BACK_END_URL + "/rmp/getProf";
 
       axios.get(url + "?" + param)
         .then((res) => {
@@ -61,7 +64,7 @@ const SearchItems = (props) => {
 
     }
     // eslint-disable-next-line
-  }, [props]);
+  }, [props.info]);
 
   /**
    * Rebuild the tool tip for dynamic content
@@ -79,7 +82,7 @@ const SearchItems = (props) => {
 
     let index = 0;
     for (const [name, message] of Object.entries(props.info)) {
-      if (name === "class_name" || name === "link") {
+      if (name === "class_name" || name === "Notes") {
         continue;
       }
 
@@ -110,7 +113,7 @@ const SearchItems = (props) => {
           index += 1;
         }
       } else {
-        infolist.push(<Info key={index} name={name} message={name === 'Status' ? 
+        infolist.push(<Info key={index} name={name} message={name === 'Class Status' ? 
           (message === 'Open' ? <div style={{color:"blue", float:'left'}}>{message}</div> : (message === 'Closed' ? <div style={{color:"red"}}>{message}</div> 
           : 
           <div style={{color:"#FF8C00"}}>{message}</div>)) : message}/>);
@@ -128,28 +131,30 @@ const SearchItems = (props) => {
    */
   const onCourseClick = (e) => {
     if(e.target.tagName === 'A') return;
-    const date_strings = props.info["Days/Times"].split(' ');
-    const weekdays = date_strings[0].match(/.{1,2}/g);
-    const start_time = moment(date_strings[1], 'hh:mm a');
-    const end_time = moment(date_strings[3], 'hh:mm a');
+    const date_strings = props.info["Days/Times"].substr(0, props.info["Days/Times"].search(' '))
+    const time_strings = props.info["Days/Times"].substr(props.info["Days/Times"].search(' ') + 1)
+    const weekdays = date_strings.split(',');
+    const start_time = moment(time_strings.split(' - ')[0], 'hh.mm A');
+    const end_time = moment(time_strings.split(' - ')[1], 'hh.mm A');
+
 
     for(let day of weekdays) {
       let start_date = moment();
       let end_date = moment();
 
-      if(day === 'Mo') {
+      if(day === 'Mon') {
         start_date = moment().day(1);
         end_date = moment().day(1);
-      } else if(day === 'Tu') {
+      } else if(day === 'Tue') {
         start_date = moment().day(2);
         end_date = moment().day(2);
-      } else if(day === 'We') {
+      } else if(day === 'Wed') {
         start_date = moment().day(3);
         end_date = moment().day(3);
-      } else if(day === 'Th') {
+      } else if(day === 'Thu') {
         start_date = moment().day(4);
         end_date = moment().day(4);
-      } else if(day === 'Fr') {
+      } else if(day === 'Fri') {
         start_date = moment().day(5);
         end_date = moment().day(5);
       } else {
@@ -164,22 +169,19 @@ const SearchItems = (props) => {
       end_date.minute(end_time.minute());
       end_date.second(0);
 
-      props.handleAddCourse(start_date, end_date, props.info["class_name"]);
+      props.handleAddCourse(start_date, end_date, props.info["Class#"]);
     }
   }
 
   return (
     <button className="search-item" onClick={onCourseClick}>
       <div className="item-name">{props.info["class_name"]}</div>
-      <div className="info-container" data-tip="Click me to see details.">
-        <a
+      <div className="info-container" data-tip={props.info['Notes'] ? props.info['Notes'] : 'No Notes'}>
+        <span
           className="info-circle"
-          href={props.info["link"]}
-          target="_blank"
-          rel="noreferrer"
         >
           i
-        </a>
+        </span>
       </div>
       <ul className="item-attrib-collection">{displayInfo()}</ul>
     </button>
