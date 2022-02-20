@@ -114,7 +114,7 @@ const SearchItems = (props) => {
         }
       } else {
         infolist.push(<Info key={index} name={name} message={name === 'Class Status' ? 
-          (message === 'Open' ? <div style={{color:"blue", float:'left'}}>{message}</div> : (message === 'Closed' ? <div style={{color:"red"}}>{message}</div> 
+          (message === 'Open' ? <div style={{color:"blue", float:'left'}}>{message}</div> : (message === 'Closed' || message === 'Cancelled' ? <div style={{color:"red"}}>{message}</div> 
           : 
           <div style={{color:"#FF8C00"}}>{message}</div>)) : message}/>);
         index += 1;

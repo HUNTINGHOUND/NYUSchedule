@@ -20,9 +20,6 @@ const SearchOption = (props) => {
   const [term, setTerm] = useState('');
   const [acad_name, setAcadName] = useState('');
   const [subject, setSubject] = useState('');
-  const [catalog_nbr, setCatalogNbr] = useState(0);
-  const [keyword, setKeyword] = useState('');
-  const [class_nbr, setClassNbr] = useState('');
 
   /**
    * Async function for sending request that get courses based on the configuration chosen by the user. 
@@ -163,7 +160,8 @@ const SearchOption = (props) => {
    * @param {*} e Change event
    */
   const onCatalogChange = e => {
-    setCatalogNbr(e.target.value);
+    console.log("Change catalog", e.target.value)
+    props.handleCatalogChange(e.target.value);
   }
 
   /**
@@ -171,7 +169,7 @@ const SearchOption = (props) => {
    * @param {*} e Change event
    */
   const onKeywordChange = e => {
-    setKeyword(e.target.value);
+    props.handleKeywordChange(e.target.value)
   }
 
   /**
@@ -179,7 +177,7 @@ const SearchOption = (props) => {
    * @param {*} e Change event
    */
   const onClassChange = e => {
-    setClassNbr(e.target.value);
+    props.handleClassChange(e.target.value)
   }
 
   return (

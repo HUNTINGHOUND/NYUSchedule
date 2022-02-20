@@ -1,5 +1,5 @@
 {
-  "homepage": "http://HUNTINGHOUND.github.io/nyuschedule",
+  "homepage": "http://nyuschedule.com",
   "name": "nyuschedule",
   "version": "0.1.0",
   "private": true,
@@ -13,6 +13,7 @@
     "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
     "react-scripts": "4.0.3",
     "react-tooltip": "^4.2.21",
     "react-week-calendar": "^0.1.3",
