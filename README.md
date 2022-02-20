@@ -3,7 +3,7 @@
 A web app that crawls the albert public course search website to get easily gather course information. It's built with a calendar that students can use to better visualize their schedule.
 
 ## Demo
-The application is currently hosted on [github pages](https://huntinghound.github.io/nyuschedule/).
+The application is currently hosted on [nyuschedule](https://www.nyuschedule.com).
 
 ### Latency issue
 Please note that I'm hosting the back-end on a free heroku server so it's not the fastest of apps. Heroku puts a server to sleep if it idles for too long. Therefore, sometimes a request might take longer then usual. Please be patient and wait for about 30 seconds or so. (If a request is not responded within 30 seconds, something is wrong).
