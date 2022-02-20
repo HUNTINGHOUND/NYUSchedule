@@ -8,7 +8,9 @@ import SearchOption from './SearchOption.jsx';
 const Searcher = (props) => {
   const [data, setData] = useState({});
   const [catalog_nbr, setCatalogNbr] = useState('');
+  // eslint-disable-next-line
   const [keyword, setKeyword] = useState('');
+  // eslint-disable-next-line
   const [class_nbr, setClassNbr] = useState('');
 
   const handleCatalogChange = cat => setCatalogNbr(cat)
