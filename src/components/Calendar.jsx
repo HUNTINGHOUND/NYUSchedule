@@ -15,6 +15,7 @@ const Calendar = (props) => {
         modalComponent={CalendarModal}
         firstDay={moment().day(1)}
         dayFormat="ddd"
+        scaleUnit={5}
         startTime={moment({h:6, m:0})}
         endTime={moment({h:21, m:0})}
         numberOfDays={5}

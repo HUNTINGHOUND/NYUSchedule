@@ -172,13 +172,6 @@ const SearchOption = (props) => {
     props.handleKeywordChange(e.target.value)
   }
 
-  /**
-   * Handle changing class number
-   * @param {*} e Change event
-   */
-  const onClassChange = e => {
-    props.handleClassChange(e.target.value)
-  }
 
   return (
     <div className="search-option">
@@ -289,25 +282,19 @@ const SearchOption = (props) => {
                 placeholder="Input catalog"
                 onChange={onCatalogChange}/>
             </div>
-          </div>
 
-          <div className="search-field">
-            <label>
-              Class Number
-            </label>
-            <div className="search-input">
-              <Input
-                style={{
-                  width: '100%'
-                }}
-                placeholder="Input keyword"
-                onChange={onClassChange}/>
+            <div>
+              <label>
+                &nbsp;
+              </label>
+              <div>&nbsp;</div>
+              &nbsp;
             </div>
           </div>
         </div>
       </div>
 
-      <Button type="primary" onClick={searchAsyncFunction.execute} disabled={searchAsyncFunction.status === "pending"}>Search</Button>
+      <Button style={{"float": "left"}} type="primary" onClick={searchAsyncFunction.execute} disabled={searchAsyncFunction.status === "pending"}>Search</Button>
 
     </div>
   )

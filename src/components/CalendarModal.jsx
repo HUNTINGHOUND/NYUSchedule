@@ -42,7 +42,7 @@ const CalendarModal = props => {
                     setEnd(moments[1]);
                 }}
                 format="HH:mm"
-                minuteStep={15}
+                minuteStep={5}
                 disabledHours={() => {
                     const disabled = [...Array(6).keys(), ...(Array.from(Array(4).keys()).map((num) => {
                         return num + 20;

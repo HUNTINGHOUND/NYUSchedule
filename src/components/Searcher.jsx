@@ -8,7 +8,6 @@ import SearchOption from './SearchOption.jsx';
 const Searcher = (props) => {
   const [data, setData] = useState({});
   const [catalog_nbr, setCatalogNbr] = useState('');
-  // eslint-disable-next-line
   const [keyword, setKeyword] = useState('');
   // eslint-disable-next-line
   const [class_nbr, setClassNbr] = useState('');
@@ -18,15 +17,24 @@ const Searcher = (props) => {
   const handleClassChange = cla => setClassNbr(cla)
 
   const filtered_data = useMemo(() => {
-    let processed = {}
+    let catalog_processed = {}
+    // Catalog number filter
     for (let course in data) {
       if (course.search(catalog_nbr) >= 0) {
-        processed[course] = data[course]
+        catalog_processed[course] = data[course]
       }
     }
 
-    return processed
-  }, [data, catalog_nbr])
+    let keyword_processed = {}
+    // keyword gilter
+    for (let course in catalog_processed) {
+      if (course.search(keyword) >= 0) {
+        keyword_processed[course] = catalog_processed[course]
+      }
+    }
+
+    return keyword_processed
+  }, [data, catalog_nbr, keyword])
   
 
   /**
