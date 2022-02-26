@@ -14,7 +14,7 @@ Clone this repo, go to the root directory and run `npm install` (if this fails t
 
 ## TODOS
 - [x] Better Styling for the calendar through css and custom components
-- [ ] Complete keyword filter option (keyword option does nothing at the time of writing)
+- [x] Complete keyword filter option (keyword option does nothing at the time of writing)
 - [ ] More filter options
 - [ ] Use local storage to save options
 - [ ] Backend unit-testing
@@ -23,9 +23,9 @@ Clone this repo, go to the root directory and run `npm install` (if this fails t
 - [ ] Login feature? (TBD)
 - [ ] Add more error handling
 - [x] Add Css for mobile
-- [ ] Add parsing for the new public course search website
+- [x] Add parsing for the new public course search website
 
-## Known issues
+## ~~Known issues~~
 NYU course search sucks ([found here](https://m.albert.nyu.edu/app/catalog/classSearch)). While I can technically write a back-end that logs into my nyu account and go through the official albert tool (which sucks), this method is way too slow. One idea is to parse through all the courses at a set time and cache the result (search through every 1-5 minutes, can be done using concurrency) but this will take a while to code. Unfortunately in the mean time, certain schools (notably Tandon) might not be able to look at their courses. I'm going to leave the option available if NYU decided to fix their website.
 
 ## Issues or Want to contribute?
